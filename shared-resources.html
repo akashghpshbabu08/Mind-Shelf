@@ -1,0 +1,318 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shared Resources | MindShelf</title>
+    <link rel="stylesheet" href="./shared-resources.css">
+</head>
+<body>
+
+<div class="app">
+
+    <aside class="sidebar" id="sidebar">
+        <a href="student-dashboard.html" class="brand">
+            <div class="brand-icon">M</div>
+            <span>MindShelf</span>
+        </a>
+
+        <p class="menu-title">WORKSPACE</p>
+
+        <nav class="nav-menu">
+            <a href="student-dashboard.html" class="nav-link">
+                <span>⌂</span> Dashboard
+            </a>
+            <a href="my-notes.html" class="nav-link">
+                <span>▤</span> My Notes
+            </a>
+            <a href="my-collections.html" class="nav-link">
+                <span>▣</span> My Collections
+            </a>
+            <a href="shared-resources.html" class="nav-link active">
+                <span>♧</span> Shared Resources
+            </a>
+            <a href="shared-knowledge.html" class="nav-link">
+                <span>✧</span> Shared Knowledge
+            </a>
+            <a href="profile.html" class="nav-link">
+                <span>♡</span> My Profile
+            </a>
+        </nav>
+
+        <div class="sidebar-bottom">
+            <div class="help-card">
+                <div class="help-icon">✦</div>
+                <h4>Learn together.</h4>
+                <p>Discover ideas and resources from your learning community.</p>
+            </div>
+
+            <a href="profile.html" class="profile-link">
+                <div class="avatar">B</div>
+                <div>
+                    <strong>Bhavaya</strong>
+                    <small>Student</small>
+                </div>
+                <span class="profile-dots">···</span>
+            </a>
+        </div>
+    </aside>
+
+    <main class="main-content">
+
+        <header class="topbar">
+            <button class="menu-toggle" id="menuToggle"
+                    aria-label="Toggle sidebar">☰</button>
+
+            <div class="breadcrumb">
+                Workspace <span>/</span> Shared Resources
+            </div>
+
+            <div class="top-avatar">B</div>
+        </header>
+
+        <section class="page-content">
+
+            <div class="page-heading">
+                <div>
+                    <p class="eyebrow">LEARN • DISCOVER • SHARE</p>
+                    <h1>Shared Resources<span>.</span></h1>
+                    <p class="subtitle">
+                        Discover useful resources shared by your community.
+                    </p>
+                </div>
+
+                <button class="primary-btn" id="shareBtn">
+                    ＋ Share Resource
+                </button>
+            </div>
+
+            <section class="hero">
+                <div class="hero-text">
+                    <span class="hero-label">YOUR COMMUNITY LIBRARY</span>
+                    <h2>Good resources.<br>Better learning.</h2>
+                    <p>
+                        Explore notes, guides and learning materials
+                        collected by students like you.
+                    </p>
+                    <button class="hero-btn" id="exploreBtn">
+                        Explore Resources ↓
+                    </button>
+                </div>
+
+                <div class="hero-art" aria-hidden="true">
+                    <div class="hero-circle"></div>
+                    <div class="hero-paper paper-one">✎</div>
+                    <div class="hero-paper paper-two">▤</div>
+                    <div class="hero-paper paper-three">✦</div>
+                </div>
+            </section>
+
+            <section class="stats">
+                <div class="stat-card">
+                    <div class="stat-icon">▤</div>
+                    <div>
+                        <p>Resources</p>
+                        <h3 id="resourceCount">0</h3>
+                    </div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-icon">♡</div>
+                    <div>
+                        <p>My Bookmarks</p>
+                        <h3 id="bookmarkCount">0</h3>
+                    </div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-icon">♧</div>
+                    <div>
+                        <p>Contributors</p>
+                        <h3 id="contributorCount">0</h3>
+                    </div>
+                </div>
+            </section>
+
+            <section class="resource-section" id="resourceSection">
+
+                <div class="section-heading">
+                    <div>
+                        <h2>Explore library</h2>
+                        <p>Find something useful for your next study session.</p>
+                    </div>
+                </div>
+
+                <div class="tabs">
+                    <button class="tab active" data-tab="all">All Resources</button>
+                    <button class="tab" data-tab="popular">Popular</button>
+                    <button class="tab" data-tab="bookmarks">My Bookmarks</button>
+                </div>
+
+                <div class="toolbar">
+                    <div class="search-box">
+                        <span>⌕</span>
+                        <input type="search" id="searchInput"
+                               placeholder="Search resources..."
+                               aria-label="Search resources">
+                        <button id="clearSearch" hidden
+                                aria-label="Clear search">×</button>
+                    </div>
+
+                    <div class="filters">
+                        <select id="subjectFilter" aria-label="Filter subject">
+                            <option value="all">All subjects</option>
+                        </select>
+
+                        <select id="typeFilter" aria-label="Filter resource type">
+                            <option value="all">All types</option>
+                            <option value="Note">Notes</option>
+                            <option value="PDF">PDF</option>
+                            <option value="Video">Videos</option>
+                            <option value="Link">Links</option>
+                            <option value="Guide">Guides</option>
+                        </select>
+
+                        <select id="sortSelect" aria-label="Sort resources">
+                            <option value="newest">Newest first</option>
+                            <option value="popular">Most popular</option>
+                            <option value="name">Name A–Z</option>
+                        </select>
+
+                        <div class="view-toggle">
+                            <button class="view-btn active" data-view="grid"
+                                    aria-label="Grid view">▦</button>
+                            <button class="view-btn" data-view="list"
+                                    aria-label="List view">☷</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="results-line">
+                    <span id="resultsCount">Resources</span>
+                </div>
+
+                <div class="resource-grid" id="resourceGrid"></div>
+
+                <div class="empty-state" id="emptyState" hidden>
+                    <div class="empty-icon">▤</div>
+                    <h3 id="emptyTitle">Nothing here yet.</h3>
+                    <p id="emptyMessage">
+                        Try changing your search or filters.
+                    </p>
+                    <button class="secondary-btn" id="resetFilters">
+                        Reset Filters
+                    </button>
+                </div>
+
+            </section>
+        </section>
+    </main>
+</div>
+
+<!-- Resource Preview -->
+<div class="overlay" id="previewModal" hidden>
+    <div class="modal" role="dialog" aria-modal="true"
+         aria-labelledby="previewTitle">
+        <div class="modal-head">
+            <div>
+                <p class="eyebrow">RESOURCE PREVIEW</p>
+                <h2 id="previewTitle">Resource</h2>
+            </div>
+            <button class="close-btn" id="closePreview"
+                    aria-label="Close">×</button>
+        </div>
+
+        <div class="preview-meta" id="previewMeta"></div>
+        <p class="preview-description" id="previewDescription"></p>
+
+        <div class="preview-info">
+            <div>
+                <span>Shared by</span>
+                <strong id="previewAuthor"></strong>
+            </div>
+            <div>
+                <span>Resource type</span>
+                <strong id="previewType"></strong>
+            </div>
+        </div>
+
+        <div class="preview-actions">
+            <button class="secondary-btn" id="previewBookmark">
+                ♡ Bookmark
+            </button>
+            <a href="#" target="_blank" rel="noopener noreferrer"
+               class="primary-btn" id="openResource" hidden>
+                Open Resource ↗
+            </a>
+        </div>
+    </div>
+</div>
+
+<!-- Share Resource -->
+<div class="overlay" id="shareModal" hidden>
+    <div class="modal" role="dialog" aria-modal="true"
+         aria-labelledby="shareTitle">
+
+        <div class="modal-head">
+            <div>
+                <p class="eyebrow">CONTRIBUTE TO THE COMMUNITY</p>
+                <h2 id="shareTitle">Share a Resource</h2>
+            </div>
+            <button class="close-btn" id="closeShare"
+                    aria-label="Close">×</button>
+        </div>
+
+        <form id="shareForm">
+            <label for="shareName">Resource title</label>
+            <input id="shareName" type="text"
+                   placeholder="e.g. Python Revision Notes"
+                   maxlength="100" required>
+
+            <label for="shareSubject">Subject</label>
+            <input id="shareSubject" type="text"
+                   placeholder="e.g. Python Programming"
+                   maxlength="50" required>
+
+            <label for="shareType">Resource type</label>
+            <select id="shareType" required>
+                <option value="Note">Note</option>
+                <option value="PDF">PDF</option>
+                <option value="Video">Video</option>
+                <option value="Link">Link</option>
+                <option value="Guide">Guide</option>
+            </select>
+
+            <label for="shareDescription">Description</label>
+            <textarea id="shareDescription"
+                      placeholder="What will others learn from this resource?"
+                      maxlength="300" rows="3" required></textarea>
+
+            <label for="shareUrl">Resource URL</label>
+            <input id="shareUrl" type="url"
+                   placeholder="https://example.com" required>
+
+            <div class="form-note">
+                Your resource will be shared with the MindShelf community.
+            </div>
+
+            <div class="form-error" id="shareError" role="alert"></div>
+
+            <div class="modal-actions">
+                <button type="button" class="secondary-btn" id="cancelShare">
+                    Cancel
+                </button>
+                <button type="submit" class="primary-btn">
+                    Submit Resource
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script src="api.js"></script>
+<script src="shared-resources.js"></script>
+</body>
+</html>

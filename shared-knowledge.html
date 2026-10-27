@@ -1,0 +1,256 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shared Knowledge | MindShelf</title>
+    <link rel="stylesheet" href="shared-knowledge.css">
+</head>
+<body>
+
+<div class="app">
+
+    <aside class="sidebar" id="sidebar">
+        <a href="student-dashboard.html" class="brand">
+            <span class="brand-icon">M</span>
+            <span>MindShelf</span>
+        </a>
+
+        <p class="menu-title">WORKSPACE</p>
+
+        <nav class="nav-menu">
+            <a href="student-dashboard.html" class="nav-link">▦ Dashboard</a>
+            <a href="my-notes.html" class="nav-link">▤ My Notes</a>
+            <a href="my-collections.html" class="nav-link">▣ My Collections</a>
+            <a href="shared-resources.html" class="nav-link">▧ Resource Library</a>
+            <a href="shared-knowledge.html" class="nav-link active">♧ Shared Knowledge</a>
+        </nav>
+
+        <p class="menu-title">ACADEMIC</p>
+
+        <nav class="nav-menu">
+            <a href="submissions.html" class="nav-link">☷ Submissions</a>
+        </nav>
+
+        <div class="sidebar-bottom">
+            <div class="profile">
+                <div class="avatar">B</div>
+                <div>
+                    <strong>Bhavaya</strong>
+                    <small>Student</small>
+                </div>
+            </div>
+        </div>
+    </aside>
+
+    <main class="main">
+
+        <header class="topbar">
+            <button id="menuToggle" class="menu-toggle" aria-label="Toggle menu">☰</button>
+            <div class="breadcrumb">Workspace <span>/</span> Shared Knowledge</div>
+            <div class="top-actions">
+                <input type="search" id="topSearch" placeholder="Search knowledge...">
+                <button class="top-avatar">B</button>
+            </div>
+        </header>
+
+        <section class="content">
+
+            <div class="welcome">
+                <div>
+                    <p class="eyebrow">LEARN • DISCUSS • GROW</p>
+                    <h1>Shared Knowledge<span>.</span></h1>
+                    <p class="subtitle">
+                        Good questions create great learning.
+                        Share what you know and learn from others.
+                    </p>
+                </div>
+                <button class="primary-btn" id="openPost">＋ Share knowledge</button>
+            </div>
+
+            <section class="intro-banner">
+                <div>
+                    <span class="banner-label">YOUR LEARNING COMMUNITY</span>
+                    <h2>Every idea adds value.</h2>
+                    <p>
+                        Ask questions, explain concepts and discover
+                        different ways of thinking.
+                    </p>
+                    <button id="exploreBtn" class="banner-btn">Explore discussions ↓</button>
+                </div>
+                <div class="banner-art">✳</div>
+            </section>
+
+            <section class="stats">
+                <div class="stat-card">
+                    <span class="stat-icon green">✎</span>
+                    <p>Knowledge posts</p>
+                    <h2 id="postCount">0</h2>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-icon purple">♡</span>
+                    <p>Community likes</p>
+                    <h2 id="likeCount">0</h2>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-icon gold">♧</span>
+                    <p>Contributors</p>
+                    <h2 id="contributorCount">0</h2>
+                </div>
+            </section>
+
+            <section class="discussion-section" id="discussionSection">
+
+                <div class="section-heading">
+                    <div>
+                        <p class="eyebrow">COMMUNITY SPACE</p>
+                        <h2>Explore knowledge</h2>
+                    </div>
+                    <span id="resultsCount">0 posts</span>
+                </div>
+
+                <div class="toolbar">
+                    <div class="tabs">
+                        <button class="tab active" data-tab="all">All posts</button>
+                        <button class="tab" data-tab="questions">Questions</button>
+                        <button class="tab" data-tab="explanations">Explanations</button>
+                        <button class="tab" data-tab="saved">Saved</button>
+                    </div>
+
+                    <div class="filters">
+                        <select id="subjectFilter" aria-label="Filter by subject">
+                            <option value="all">All subjects</option>
+                        </select>
+
+                        <select id="sortSelect" aria-label="Sort posts">
+                            <option value="newest">Newest</option>
+                            <option value="popular">Most liked</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="post-layout">
+                    <div class="feed">
+                        <div class="feed-heading">
+                            <span id="feedTitle">Latest discussions</span>
+                            <span id="feedCount"></span>
+                        </div>
+
+                        <div id="postFeed"></div>
+
+                        <div class="empty-state" id="emptyState" hidden>
+                            <div>✧</div>
+                            <h3>Nothing here yet</h3>
+                            <p>Try changing your filters or share your first post.</p>
+                            <button class="primary-btn" id="emptyPost">Share knowledge</button>
+                        </div>
+                    </div>
+
+                    <aside class="right-panel">
+
+                        <div class="side-card">
+                            <p class="eyebrow">POPULAR SUBJECTS</p>
+                            <h3>Explore topics</h3>
+                            <div id="topicList" class="topic-list"></div>
+                        </div>
+
+                        <div class="side-card tip-card">
+                            <span class="tip-icon">✦</span>
+                            <h3>Share something useful.</h3>
+                            <p>
+                                Explain a difficult concept in simple words.
+                                Your explanation might help someone else.
+                            </p>
+                            <button id="tipPost">Write a post ↗</button>
+                        </div>
+
+                        <div class="side-note">
+                            <strong>Community reminder</strong>
+                            <p>Be respectful, credit your sources and keep discussions helpful.</p>
+                        </div>
+
+                    </aside>
+                </div>
+
+            </section>
+        </section>
+    </main>
+</div>
+
+<!-- Create Post Modal -->
+<div class="modal-overlay" id="postModal" hidden>
+    <div class="modal">
+        <div class="modal-header">
+            <div>
+                <p class="eyebrow">COMMUNITY CONTRIBUTION</p>
+                <h2 id="postModalTitle">Share your knowledge</h2>
+            </div>
+            <button class="close-btn" id="closePost" aria-label="Close">×</button>
+        </div>
+
+        <form id="postForm">
+            <label for="postType">Post type</label>
+            <select id="postType" required>
+                <option value="Explanation">Explanation</option>
+                <option value="Question">Question</option>
+                <option value="Study Tip">Study Tip</option>
+            </select>
+
+            <label for="postTitle">Title</label>
+            <input id="postTitle" maxlength="100" required
+                   placeholder="What would you like to share?">
+
+            <label for="postSubject">Subject</label>
+            <input id="postSubject" maxlength="50" required
+                   placeholder="e.g. Data Science">
+
+            <label for="postContent">Your knowledge</label>
+            <textarea id="postContent" rows="6" maxlength="3000"
+                      required placeholder="Write your explanation, question or tip..."></textarea>
+
+            <div class="form-bottom">
+                <small id="charCount">0 / 3000</small>
+                <span id="formError" class="form-error"></span>
+            </div>
+
+            <div class="modal-actions">
+                <button type="button" class="secondary-btn" id="cancelPost">Cancel</button>
+                <button type="submit" class="primary-btn" id="publishPost">Publish post ↗</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<!-- Comments Modal -->
+<div class="modal-overlay" id="commentsModal" hidden>
+    <div class="modal comments-modal">
+        <div class="modal-header">
+            <div>
+                <p class="eyebrow">COMMUNITY DISCUSSION</p>
+                <h2>Comments</h2>
+            </div>
+            <button class="close-btn" id="closeComments" aria-label="Close">×</button>
+        </div>
+
+        <h3 id="commentPostTitle" class="comment-post-title"></h3>
+        <div id="commentList" class="comment-list"></div>
+
+        <form id="commentForm">
+            <label for="commentInput">Add a reply</label>
+            <textarea id="commentInput" rows="3" maxlength="1000"
+                      placeholder="Write a helpful reply..." required></textarea>
+            <div class="modal-actions">
+                <button type="submit" class="primary-btn">Post reply</button>
+            </div>
+            <p class="form-error" id="commentError"></p>
+        </form>
+    </div>
+</div>
+
+<div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+<script src="api.js"></script>
+<script src="shared-knowledge.js"></script>
+</body>
+</html>

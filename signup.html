@@ -1,0 +1,202 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Create Account | MindShelf</title>
+  <link rel="stylesheet" href="signup.css">
+</head>
+<body>
+
+  <header class="navbar">
+    <a href="index.html" class="logo">
+      <span class="logo-icon">M</span>
+      <span>MindShelf</span>
+    </a>
+
+    <a href="index.html" class="home-link">← Back to home</a>
+  </header>
+
+  <main class="signup-container">
+
+    <section class="signup-visual">
+      <div class="visual-content">
+
+        <span class="visual-tag">YOUR KNOWLEDGE SPACE</span>
+
+        <h1>
+          Make room<br>
+          for <em>great ideas.</em>
+        </h1>
+
+        <p class="visual-description">
+          Bring your notes, resources and learning
+          journey together in one thoughtful space.
+        </p>
+
+        <div class="visual-note">
+          <div class="note-icon">✦</div>
+          <div>
+            <h3>Learn something. Share something.</h3>
+            <p>Your knowledge deserves a place.</p>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="visual-footer">
+        <span>Learn · Share · Grow</span>
+        <span>MindShelf © 2026</span>
+      </div>
+    </section>
+
+    <section class="signup-section">
+      <div class="signup-card">
+
+        <div class="mobile-logo">
+          <span class="logo-icon">M</span>
+          <span>MindShelf</span>
+        </div>
+
+        <div class="welcome-label">GET STARTED</div>
+
+        <h2>Create your account</h2>
+
+        <p class="subtitle">
+          Start building your personal knowledge shelf.
+        </p>
+
+        <form id="signupForm">
+
+          <div class="form-group">
+            <label for="name">Full name</label>
+            <input
+              type="text"
+              id="name"
+              name="name"
+              placeholder="Enter your full name"
+              autocomplete="name"
+              minlength="2"
+              maxlength="100"
+              required
+            >
+          </div>
+
+          <div class="form-group">
+            <label for="email">College email address</label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              placeholder="you@college.edu"
+              autocomplete="email"
+              maxlength="254"
+              required
+            >
+            <small class="field-note">
+              Use your registered college email address.
+            </small>
+          </div>
+
+          <div class="form-group">
+            <label for="password">Create password</label>
+
+            <div class="password-wrapper">
+              <input
+                type="password"
+                id="password"
+                name="password"
+                placeholder="Create a strong password"
+                autocomplete="new-password"
+                minlength="8"
+                maxlength="128"
+                required
+              >
+
+              <button
+                type="button"
+                class="show-password"
+                data-target="password"
+                aria-label="Show password"
+                aria-pressed="false"
+              >Show</button>
+            </div>
+
+            <small class="field-note">
+              Use at least 8 characters.
+            </small>
+          </div>
+
+          <div class="form-group">
+            <label for="confirmPassword">Confirm password</label>
+
+            <div class="password-wrapper">
+              <input
+                type="password"
+                id="confirmPassword"
+                name="confirmPassword"
+                placeholder="Enter your password again"
+                autocomplete="new-password"
+                minlength="8"
+                maxlength="128"
+                required
+              >
+
+              <button
+                type="button"
+                class="show-password"
+                data-target="confirmPassword"
+                aria-label="Show password"
+                aria-pressed="false"
+              >Show</button>
+            </div>
+          </div>
+
+          <div class="role-info">
+            <div class="role-icon">🎓</div>
+            <div>
+              <strong>Student Account</strong>
+              <p>
+                Student registration is open.
+                Teacher accounts require authorized approval.
+              </p>
+            </div>
+          </div>
+
+          <label class="terms">
+            <input type="checkbox" id="terms" required>
+            <span>
+              I agree to the
+              <a href="terms.html">Terms &amp; Conditions</a>
+              and
+              <a href="privacy.html">Privacy Policy</a>.
+            </span>
+          </label>
+
+          <button type="submit" class="signup-button" id="signupButton">
+            Create account <span>→</span>
+          </button>
+
+          <p id="message" class="message" aria-live="polite"></p>
+
+        </form>
+
+        <div class="login-text">
+          Already have an account?
+          <a href="login.html">Sign in</a>
+        </div>
+
+        <p class="security-note">
+          ✧ A thoughtful space for everything you learn.
+        </p>
+
+      </div>
+    </section>
+
+  </main>
+
+  <script src="api.js"></script>
+  <script src="signup.js"></script>
+</body>
+</html>

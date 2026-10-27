@@ -1,0 +1,501 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Student Dashboard | MindShelf</title>
+  <link rel="stylesheet" href="student-dashboard.css">
+  <link rel="stylesheet" href="footer.css">
+</head>
+<body>
+
+  <div class="app">
+
+    <!-- Sidebar -->
+    <aside class="sidebar" id="sidebar">
+
+      <a href="student-dashboard.html" class="brand">
+        <span class="brand-icon">M</span>
+        <span>MindShelf</span>
+      </a>
+
+      <div class="side-label">WORKSPACE</div>
+
+      <nav class="side-nav">
+        <a href="student-dashboard.html" class="nav-link active">
+          <span>▦</span> Dashboard
+        </a>
+
+        <a href="my-notes.html" class="nav-link">
+          <span>▤</span> My Notes
+        </a>
+
+        <a href="my-collections.html" class="nav-link">
+          <span>▣</span> My Collections
+        </a>
+
+        <a href="shared-resources.html" class="nav-link">
+          <span>▧</span> Resource Library
+        </a>
+
+        <a href="shared-knowledge.html" class="nav-link">
+          <span>♧</span> Shared Knowledge
+        </a>
+
+        <div class="side-label">ACADEMIC</div>
+
+        <a href="submissions.html" class="nav-link">
+          <span>☷</span> Submissions
+          <span class="nav-badge">2</span>
+        </a>
+      </nav>
+
+      <div class="sidebar-bottom">
+        <div class="help-card">
+          <div class="help-icon">✦</div>
+          <h4>Your knowledge matters.</h4>
+          <p>Keep learning. Keep collecting ideas.</p>
+        </div>
+
+        <a href="profile.html" class="profile-link">
+          <div class="avatar" id="sideAvatar">S</div>
+          <div class="profile-info">
+            <strong id="sideName">Student Name</strong>
+            <small>Student Account</small>
+          </div>
+          <span class="profile-arrow">›</span>
+        </a>
+      </div>
+
+    </aside>
+
+    <!-- Main content -->
+    <main class="main">
+
+      <!-- Topbar -->
+      <header class="topbar">
+        <button class="menu-toggle" id="menuToggle"
+          aria-label="Open navigation"
+          aria-expanded="false">☰</button>
+
+        <div class="breadcrumb">
+          Workspace <span>/</span> <strong>Dashboard</strong>
+        </div>
+
+        <div class="top-actions">
+          <form class="search-box" id="searchForm" role="search">
+            <span>⌕</span>
+            <input type="search" id="globalSearch"
+              placeholder="Search your shelf..."
+              aria-label="Search your shelf">
+            <kbd>↵</kbd>
+          </form>
+
+          <button class="icon-button" id="notificationBtn"
+            aria-label="View notifications"
+            title="Notifications">♧</button>
+
+          <div class="profile-dropdown" id="profileDropdown">
+
+  <button type="button"
+    class="top-avatar"
+    id="profileToggle"
+    aria-label="Open profile menu"
+    aria-expanded="false"
+    aria-controls="profileMenu">
+    S
+  </button>
+
+  <div class="profile-menu" id="profileMenu" hidden>
+
+    <div class="profile-menu-header">
+      <div class="profile-menu-avatar">S</div>
+
+      <div class="profile-menu-user">
+        <strong id="profileName">Student Name</strong>
+        <span id="profileEmail">student@college.edu</span>
+        <small>Student Account</small>
+      </div>
+    </div>
+
+    <div class="profile-menu-divider"></div>
+
+    <a href="profile.html" class="profile-menu-item">
+      <span>♙</span>
+      <span>My Profile</span>
+      <span class="profile-menu-arrow">›</span>
+    </a>
+
+    <a href="account-settings.html" class="profile-menu-item">
+      <span>⚙</span>
+      <span>Account Settings</span>
+      <span class="profile-menu-arrow">›</span>
+    </a>
+
+    <a href="submissions.html" class="profile-menu-item">
+      <span>▤</span>
+      <span>My Submissions</span>
+      <span class="profile-menu-arrow">›</span>
+    </a>
+
+    <a href="help.html" class="profile-menu-item">
+      <span>?</span>
+      <span>Help &amp; Support</span>
+      <span class="profile-menu-arrow">›</span>
+    </a>
+
+    <div class="profile-menu-divider"></div>
+
+    <button type="button"
+      class="profile-menu-item profile-logout"
+      id="logoutButton">
+      <span>↪</span>
+      <span>Sign Out</span>
+    </button>
+
+  </div>
+</div>
+        </div>
+      </header>
+
+      <!-- Dashboard -->
+      <div class="dashboard-content">
+
+        <section class="welcome-section">
+          <div>
+            <div class="eyebrow">
+              YOUR PERSONAL KNOWLEDGE SPACE
+            </div>
+
+            <h1>Welcome back, <span id="welcomeName">Student</span> <span class="wave">✦</span></h1>
+
+            <p>
+              Your learning journey, organized in one place.
+              What would you like to work on today?
+            </p>
+          </div>
+
+          <a href="my-notes.html" class="primary-button">
+            <span>＋</span> Create a note
+          </a>
+        </section>
+
+        <!-- Statistics -->
+        <section class="stats-grid" aria-label="Your workspace statistics">
+
+          <article class="stat-card">
+            <div class="stat-top">
+              <div class="stat-icon green">▤</div>
+              <span class="stat-caption">PERSONAL</span>
+            </div>
+            <h2 id="notesCount">12</h2>
+            <p>My Notes</p>
+            <a href="my-notes.html" class="stat-link">View notes →</a>
+          </article>
+
+          <article class="stat-card">
+            <div class="stat-top">
+              <div class="stat-icon beige">▧</div>
+              <span class="stat-caption">LIBRARY</span>
+            </div>
+            <h2 id="resourcesCount">28</h2>
+            <p>Saved Resources</p>
+            <a href="shared-resources.html" class="stat-link">Open library →</a>
+          </article>
+
+          <article class="stat-card">
+            <div class="stat-top">
+              <div class="stat-icon lavender">▣</div>
+              <span class="stat-caption">ORGANIZED</span>
+            </div>
+            <h2 id="collectionsCount">5</h2>
+            <p>Collections</p>
+            <a href="my-collections.html" class="stat-link">View collections →</a>
+          </article>
+
+          <article class="stat-card">
+            <div class="stat-top">
+              <div class="stat-icon peach">☷</div>
+              <span class="stat-caption">ACADEMIC</span>
+            </div>
+            <h2 id="feedbackCount">2</h2>
+            <p>Awaiting Review</p>
+            <a href="submissions.html" class="stat-link">Check status →</a>
+          </article>
+
+        </section>
+
+        <!-- Quick actions -->
+        <section class="quick-section">
+          <div class="section-heading">
+            <div>
+              <h2>Quick actions</h2>
+              <p>Get things done faster.</p>
+            </div>
+          </div>
+
+          <div class="quick-grid">
+
+            <a href="my-notes.html" class="quick-card">
+              <div class="quick-icon green">＋</div>
+              <div>
+                <h3>Write a Note</h3>
+                <p>Capture an idea or concept.</p>
+              </div>
+              <span class="quick-arrow">↗</span>
+            </a>
+
+            <a href="shared-resources.html" class="quick-card">
+              <div class="quick-icon beige">↥</div>
+              <div>
+                <h3>Add a Resource</h3>
+                <p>Save a PDF or useful link.</p>
+              </div>
+              <span class="quick-arrow">↗</span>
+            </a>
+
+            <a href="shared-knowledge.html" class="quick-card">
+              <div class="quick-icon lavender">⌕</div>
+              <div>
+                <h3>Explore Knowledge</h3>
+                <p>Discover shared learning materials.</p>
+              </div>
+              <span class="quick-arrow">↗</span>
+            </a>
+
+          </div>
+        </section>
+
+        <!-- Main dashboard columns -->
+        <section class="dashboard-grid">
+
+          <!-- Recent resources -->
+          <article class="panel recent-panel">
+            <div class="panel-heading">
+              <div>
+                <h2>Pick up where you left off</h2>
+                <p>Continue exploring your recent resources.</p>
+              </div>
+              <a href="shared-resources.html" class="text-link">
+                View all →
+              </a>
+            </div>
+
+            <div class="resource-list" id="recentResources">
+
+              <a href="my-notes.html" class="resource-item">
+                <div class="resource-icon note-icon">N</div>
+                <div class="resource-details">
+                  <h3>Data Science – Unit 2</h3>
+                  <p>Personal note · Data Science</p>
+                </div>
+                <span class="resource-type">NOTE</span>
+                <span class="item-arrow">›</span>
+              </a>
+
+              <a href="shared-resources.html" class="resource-item">
+                <div class="resource-icon pdf-icon">P</div>
+                <div class="resource-details">
+                  <h3>Statistics Revision</h3>
+                  <p>PDF · Mathematics</p>
+                </div>
+                <span class="resource-type">PDF</span>
+                <span class="item-arrow">›</span>
+              </a>
+
+              <a href="shared-resources.html" class="resource-item">
+                <div class="resource-icon link-icon">L</div>
+                <div class="resource-details">
+                  <h3>JavaScript Learning Guide</h3>
+                  <p>Saved link · Web Technologies</p>
+                </div>
+                <span class="resource-type">LINK</span>
+                <span class="item-arrow">›</span>
+              </a>
+
+            </div>
+
+            <div class="panel-footer">
+              <a href="shared-resources.html">Explore your complete resource library →</a>
+            </div>
+          </article>
+
+          <!-- Submission summary -->
+          <article class="panel submission-panel">
+            <div class="panel-heading">
+              <div>
+                <h2>Submission center</h2>
+                <p>Stay updated on your shared work.</p>
+              </div>
+              <a href="submissions.html" class="text-link">View all →</a>
+            </div>
+
+            <div class="submission-summary">
+              <div class="submission-number">
+                <strong id="pendingCount">2</strong>
+                <span>Awaiting review</span>
+              </div>
+
+              <div class="status-symbol">◷</div>
+            </div>
+
+            <div class="submission-item">
+              <div class="submission-dot pending"></div>
+              <div>
+                <h3>Computer Graphics Notes</h3>
+                <p>Shared with teacher</p>
+              </div>
+              <span class="status-label pending-label">Pending</span>
+            </div>
+
+            <div class="submission-item">
+              <div class="submission-dot reviewed"></div>
+              <div>
+                <h3>Maths Case Study</h3>
+                <p>Teacher feedback available</p>
+              </div>
+              <span class="status-label reviewed-label">Reviewed</span>
+            </div>
+
+            <div class="panel-footer">
+              <a href="submissions.html">Manage submissions & feedback →</a>
+            </div>
+          </article>
+
+        </section>
+
+        <!-- Bottom section -->
+        <section class="bottom-grid">
+
+          <!-- Activity -->
+          <article class="panel activity-panel">
+            <div class="panel-heading">
+              <div>
+                <h2>Your learning activity</h2>
+                <p>Resource activity · Last 7 days</p>
+              </div>
+              <span class="activity-badge">THIS WEEK</span>
+            </div>
+
+            <div class="activity-chart" id="activityChart"
+              role="img" aria-label="Illustrative weekly learning activity chart">
+
+              <div class="chart-column">
+                <div class="chart-track">
+                  <div class="chart-bar" style="height:35%"></div>
+                </div>
+                <span>Mon</span>
+              </div>
+
+              <div class="chart-column">
+                <div class="chart-track">
+                  <div class="chart-bar" style="height:65%"></div>
+                </div>
+                <span>Tue</span>
+              </div>
+
+              <div class="chart-column">
+                <div class="chart-track">
+                  <div class="chart-bar" style="height:45%"></div>
+                </div>
+                <span>Wed</span>
+              </div>
+
+              <div class="chart-column">
+                <div class="chart-track">
+                  <div class="chart-bar highlight" style="height:85%"></div>
+                </div>
+                <span>Thu</span>
+              </div>
+
+              <div class="chart-column">
+                <div class="chart-track">
+                  <div class="chart-bar" style="height:50%"></div>
+                </div>
+                <span>Fri</span>
+              </div>
+
+              <div class="chart-column">
+                <div class="chart-track">
+                  <div class="chart-bar" style="height:72%"></div>
+                </div>
+                <span>Sat</span>
+              </div>
+
+              <div class="chart-column">
+                <div class="chart-track">
+                  <div class="chart-bar" style="height:25%"></div>
+                </div>
+                <span>Sun</span>
+              </div>
+
+            </div>
+
+            <p class="chart-note">
+              Sample visualization. Real activity will appear after backend integration.
+            </p>
+          </article>
+
+          <!-- Sharing overview -->
+          <article class="panel sharing-panel">
+            <div class="panel-heading">
+              <div>
+                <h2>Knowledge access</h2>
+                <p>Keep track of your sharing.</p>
+              </div>
+              <span class="sharing-icon">♧</span>
+            </div>
+
+            <div class="sharing-row">
+              <div class="sharing-symbol">◉</div>
+              <div>
+                <h3>Personal resources</h3>
+                <p>Visible only to you</p>
+              </div>
+            </div>
+
+            <div class="sharing-row">
+              <div class="sharing-symbol">♧</div>
+              <div>
+                <h3>Teacher sharing</h3>
+                <p>Check your resource permissions</p>
+              </div>
+            </div>
+
+            <div class="sharing-row">
+              <div class="sharing-symbol">◎</div>
+              <div>
+                <h3>Community resources</h3>
+                <p>Discover authorized shared materials</p>
+              </div>
+            </div>
+
+            <div class="panel-footer">
+              <a href="shared-knowledge.html">Manage shared knowledge →</a>
+            </div>
+          </article>
+
+        </section>
+
+        <footer class="dashboard-footer">
+          <span>© <span id="year"></span> MindShelf</span>
+          <span>Learn · Share · Grow</span>
+        </footer>
+
+      </div>
+    </main>
+  </div>
+
+  <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+   <div id="footer"></div>
+
+  <script src="api.js"></script>
+  <script src="student-dashboard.js"></script>
+  <script src="footer.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,285 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Collections | MindShelf</title>
+    <link rel="stylesheet" href="my-collections.css">
+</head>
+<body>
+
+<div class="app">
+    <aside class="sidebar" id="sidebar">
+        <a href="student-dashboard.html" class="brand">
+            <div class="brand-icon">M</div>
+            <span>MindShelf</span>
+        </a>
+
+        <p class="menu-title">WORKSPACE</p>
+
+        <nav class="nav-menu">
+            <a href="student-dashboard.html" class="nav-link">
+                <span>⌂</span> Dashboard
+            </a>
+            <a href="my-notes.html" class="nav-link">
+                <span>✎</span> My Notes
+            </a>
+            <a href="my-collections.html" class="nav-link active">
+                <span>▣</span> My Collections
+            </a>
+            <a href="shared-resources.html" class="nav-link">
+                <span>▧</span> Resource Library
+            </a>
+            <a href="shared-knowledge.html" class="nav-link">
+                <span>♧</span> Shared Knowledge
+            </a>
+        </nav>
+
+        <div class="sidebar-bottom">
+            <div class="help-card">
+                <div class="help-icon">✦</div>
+                <h4>Your knowledge, organized.</h4>
+                <p>Keep your learning resources together.</p>
+            </div>
+
+            <a href="profile.html" class="profile-link">
+                <div class="avatar">B</div>
+                <div>
+                    <strong>Bhavaya</strong>
+                    <small>Student</small>
+                </div>
+                <span class="profile-dots">···</span>
+            </a>
+        </div>
+    </aside>
+
+    <main class="main-content">
+        <header class="topbar">
+            <button class="menu-toggle" id="menuToggle" aria-label="Toggle sidebar">☰</button>
+
+            <div class="breadcrumb">Workspace <span>/</span> My Collections</div>
+
+            <div class="topbar-right">
+                <div class="top-avatar">B</div>
+            </div>
+        </header>
+
+        <section class="page-content">
+            <div class="page-heading">
+                <div>
+                    <p class="eyebrow">YOUR PERSONAL SPACE</p>
+                    <h1>My Collections<span class="heading-dot">.</span></h1>
+                    <p class="subtitle">
+                        Bring your notes and learning resources together.
+                    </p>
+                </div>
+
+                <button class="primary-btn" id="createBtn">
+                    <span>＋</span> New Collection
+                </button>
+            </div>
+
+            <section class="welcome-banner">
+                <div class="banner-content">
+                    <span class="banner-label">YOUR LEARNING LIBRARY</span>
+                    <h2>One place for everything<br>you're learning.</h2>
+                    <p>Organize your ideas, subjects and resources your way.</p>
+                </div>
+                <div class="banner-art" aria-hidden="true">
+                    <div class="art-circle"></div>
+                    <div class="art-book book-one">✦</div>
+                    <div class="art-book book-two">▤</div>
+                    <div class="art-book book-three">✎</div>
+                </div>
+            </section>
+
+            <section class="stats-row">
+                <div class="stat-card">
+                    <span class="stat-icon">▣</span>
+                    <div>
+                        <p>Total Collections</p>
+                        <h3 id="totalCount">0</h3>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-icon">▤</span>
+                    <div>
+                        <p>Total Resources</p>
+                        <h3 id="resourceCount">0</h3>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-icon">✦</span>
+                    <div>
+                        <p>Subjects</p>
+                        <h3 id="subjectCount">0</h3>
+                    </div>
+                </div>
+            </section>
+
+            <section class="collections-section">
+                <div class="section-heading">
+                    <div>
+                        <h2>Your collections</h2>
+                        <p>Everything you've saved, all in one place.</p>
+                    </div>
+                    <span class="collection-total" id="visibleCount">0 collections</span>
+                </div>
+
+                <div class="toolbar">
+                    <div class="search-box">
+                        <span>⌕</span>
+                        <input type="search" id="searchInput"
+                               placeholder="Search collections..."
+                               aria-label="Search collections">
+                        <button id="clearSearch" class="clear-search" hidden
+                                aria-label="Clear search">×</button>
+                    </div>
+
+                    <div class="toolbar-controls">
+                        <select id="subjectFilter" aria-label="Filter by subject">
+                            <option value="all">All subjects</option>
+                        </select>
+
+                        <select id="sortSelect" aria-label="Sort collections">
+                            <option value="recent">Recently updated</option>
+                            <option value="name">Name: A–Z</option>
+                            <option value="resources">Most notes</option>
+                        </select>
+
+                        <div class="view-toggle">
+                            <button class="view-btn active" data-view="grid"
+                                    aria-label="Grid view" title="Grid view">▦</button>
+                            <button class="view-btn" data-view="list"
+                                    aria-label="List view" title="List view">☷</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="collections-grid" id="collectionsGrid"></div>
+
+                <div class="empty-state" id="emptyState" hidden>
+                    <div class="empty-icon">▣</div>
+                    <h3 id="emptyTitle">Your space is waiting.</h3>
+                    <p id="emptyMessage">
+                        Create your first collection and start organizing your learning.
+                    </p>
+                    <button class="primary-btn" id="emptyCreateBtn">
+                        ＋ Create Collection
+                    </button>
+                </div>
+            </section>
+        </section>
+    </main>
+</div>
+
+<div class="modal-overlay" id="collectionModal" hidden>
+    <div class="modal" role="dialog" aria-modal="true"
+         aria-labelledby="modalTitle">
+        <div class="modal-heading">
+            <div>
+                <p class="eyebrow">BUILD YOUR LIBRARY</p>
+                <h2 id="modalTitle">New Collection</h2>
+            </div>
+            <button class="close-btn" id="closeModal" aria-label="Close">×</button>
+        </div>
+
+        <form id="collectionForm">
+            <label for="collectionName">Collection name</label>
+            <input id="collectionName" type="text"
+                   placeholder="e.g. Machine Learning Essentials"
+                   maxlength="70" required>
+
+            <label for="collectionSubject">Subject</label>
+            <select id="collectionSubject" required>
+                <option value="">Choose a subject</option>
+                <option>Data Science</option>
+                <option>Discrete Mathematics</option>
+                <option>UI/UX Design</option>
+                <option>Web Development</option>
+                <option>Programming</option>
+                <option>Generative AI</option>
+                <option>Other</option>
+            </select>
+
+            <label for="collectionDescription">Description</label>
+            <textarea id="collectionDescription"
+                      placeholder="What will you keep in this collection?"
+                      maxlength="250" rows="3"></textarea>
+
+            <div class="form-error" id="formError" role="alert"></div>
+
+            <div class="modal-actions">
+                <button type="button" class="secondary-btn" id="cancelModal">
+                    Cancel
+                </button>
+                <button type="submit" class="primary-btn" id="saveCollection">
+                    Create Collection
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div class="modal-overlay" id="detailModal" hidden>
+    <div class="modal detail-modal" role="dialog" aria-modal="true"
+         aria-labelledby="detailTitle">
+        <div class="modal-heading">
+            <div>
+                <p class="eyebrow">COLLECTION DETAILS</p>
+                <h2 id="detailTitle">Collection</h2>
+            </div>
+            <button class="close-btn" id="closeDetail" aria-label="Close">×</button>
+        </div>
+
+        <p class="detail-description" id="detailDescription"></p>
+
+        <div class="detail-meta">
+            <span id="detailSubject"></span>
+            <span id="detailResourceCount"></span>
+        </div>
+
+        <div class="resource-heading">
+            <h3>Notes in this collection</h3>
+            <button class="primary-btn small-btn" id="addResourceBtn">
+                ＋ Add Resource
+            </button>
+        </div>
+
+        <form id="resourceForm" hidden>
+            <label for="resourceName">Resource title</label>
+            <input id="resourceName" type="text"
+                   placeholder="e.g. Regression class notes"
+                   maxlength="100" required>
+
+            <label for="resourceType">Resource type</label>
+            <select id="resourceType">
+                <option>Note</option>
+                <option>Link</option>
+                <option>Document</option>
+                <option>Other</option>
+            </select>
+
+            <label for="resourceLink">Resource link (optional)</label>
+            <input id="resourceLink" type="url"
+                   placeholder="https://example.com">
+
+            <div class="modal-actions">
+                <button type="button" class="secondary-btn" id="cancelResource">
+                    Cancel
+                </button>
+                <button type="submit" class="primary-btn">Save Resource</button>
+            </div>
+        </form>
+
+        <div class="resource-list" id="resourceList"></div>
+    </div>
+</div>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script src="api.js"></script>
+<script src="my-collections.js"></script>
+</body>
+</html>

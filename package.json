@@ -1,0 +1,9 @@
+{
+  "name": "project-fft",
+  "version": "1.0.0",
+  "description": "MindShelf project root",
+  "scripts": {
+    "start": "npm --prefix backend start",
+    "dev": "npm --prefix backend run dev"
+  }
+}

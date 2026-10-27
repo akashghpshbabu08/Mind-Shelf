@@ -1,0 +1,138 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login | MindShelf</title>
+  <link rel="stylesheet" href="login.css">
+</head>
+<body>
+
+  <header class="navbar">
+    <a href="index.html" class="logo">
+      <span class="logo-icon">M</span>
+      <span>MindShelf</span>
+    </a>
+
+    <a href="index.html" class="home-link">← Back to home</a>
+  </header>
+
+  <main class="login-container">
+
+    <section class="login-visual">
+      <div class="visual-content">
+        <span class="visual-tag">YOUR KNOWLEDGE SPACE</span>
+
+        <h1>Great ideas<br>deserve a <em>place.</em></h1>
+
+        <p class="visual-description">
+          Keep your notes, discover useful resources,
+          and grow together with your college community.
+        </p>
+
+        <div class="visual-note">
+          <div class="note-icon">✦</div>
+          <div>
+            <h3>Learn something. Share something.</h3>
+            <p>Your learning journey, all in one shelf.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="visual-footer">
+        <span>Learn · Share · Grow</span>
+        <span>MindShelf © 2026</span>
+      </div>
+    </section>
+
+    <section class="login-section">
+      <div class="login-card">
+
+        <div class="mobile-logo">
+          <span class="logo-icon">M</span>
+          <span>MindShelf</span>
+        </div>
+
+        <div class="welcome-label">WELCOME BACK</div>
+
+        <h2>Sign in to your shelf</h2>
+
+        <p class="subtitle">
+          Pick up where your learning left off.
+        </p>
+
+        <form id="loginForm">
+
+          <div class="form-group">
+            <label for="email">College email address</label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              placeholder="you@college.edu"
+              autocomplete="username"
+              required
+            >
+          </div>
+
+          <div class="form-group">
+            <label for="password">Password</label>
+
+            <div class="password-wrapper">
+              <input
+                type="password"
+                id="password"
+                name="password"
+                placeholder="Enter your password"
+                autocomplete="current-password"
+                required
+              >
+
+              <button
+                type="button"
+                id="togglePassword"
+                class="show-password"
+                aria-label="Show password"
+                aria-pressed="false"
+              >Show</button>
+            </div>
+          </div>
+
+          <div class="form-options">
+            <label class="remember">
+              <span>Signed in for this tab</span>
+            </label>
+
+            <span class="forgot-disabled" title="Password reset is not available yet">
+              Password reset unavailable
+            </span>
+          </div>
+
+          <button type="submit" class="login-button" id="loginButton">
+            <span>Sign in</span>
+            <span>→</span>
+          </button>
+
+          <p id="message" class="message" aria-live="polite"></p>
+        </form>
+
+        <div class="signup-text">
+          New to MindShelf?
+          <a href="signup.html">Create an account</a>
+        </div>
+
+        <p class="security-note">
+          <span class="security-icon">✧</span>
+          A thoughtful space for everything you learn.
+        </p>
+
+      </div>
+    </section>
+
+  </main>
+
+  <script src="api.js"></script>
+  <script src="login.js"></script>
+</body>
+</html>

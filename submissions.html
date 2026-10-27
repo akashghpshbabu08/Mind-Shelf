@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Submissions &amp; Feedback | MindShelf</title>
+  <link rel="stylesheet" href="student-dashboard.css">
+  <link rel="stylesheet" href="footer.css">
+</head>
+<body>
+  <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+  <div class="app">
+    <!-- Sidebar -->
+    <aside class="sidebar" id="sidebar">
+      <a href="student-dashboard.html" class="brand">
+        <span class="brand-icon">M</span>
+        <span>MindShelf</span>
+      </a>
+
+      <div class="side-label">WORKSPACE</div>
+
+      <nav class="side-nav">
+        <a href="student-dashboard.html" class="nav-link">
+          <span>▦</span> Dashboard
+        </a>
+
+        <a href="my-notes.html" class="nav-link">
+          <span>▤</span> My Notes
+        </a>
+
+        <a href="my-collections.html" class="nav-link">
+          <span>▣</span> My Collections
+        </a>
+
+        <a href="shared-resources.html" class="nav-link">
+          <span>▧</span> Resource Library
+        </a>
+
+        <a href="shared-knowledge.html" class="nav-link">
+          <span>♧</span> Shared Knowledge
+        </a>
+
+        <div class="side-label">ACADEMIC</div>
+
+        <a href="submissions.html" class="nav-link active">
+          <span>☷</span> Submissions
+          <span class="nav-badge">2</span>
+        </a>
+      </nav>
+
+      <div class="sidebar-bottom">
+        <div class="help-card">
+          <div class="help-icon">✦</div>
+          <h4>Your knowledge matters.</h4>
+          <p>Keep learning. Keep collecting ideas.</p>
+        </div>
+
+        <a href="profile.html" class="profile-link">
+          <div class="avatar" id="sideAvatar">S</div>
+          <div class="profile-info">
+            <strong id="sideName">Student Account</strong>
+            <small>Student Account</small>
+          </div>
+          <span class="profile-arrow">›</span>
+        </a>
+      </div>
+    </aside>
+
+    <!-- Main Content -->
+    <div class="main">
+      <header class="topbar">
+        <div class="topbar-left">
+          <button class="menu-button" id="menuToggle" aria-label="Open navigation">☰</button>
+          <div class="brand-mobile">
+            <span class="brand-icon">M</span>
+            <span>MindShelf</span>
+          </div>
+        </div>
+
+        <div class="topbar-right">
+          <a href="student-dashboard.html" class="text-link">← Back to Dashboard</a>
+        </div>
+      </header>
+
+      <main class="content">
+        <section class="welcome-box">
+          <div class="welcome-text">
+            <span class="tag">ACADEMIC PROGRESS</span>
+            <h1>Submissions &amp; <em>Feedback</em></h1>
+            <p>Track assignments, reviewed notes, and academic materials submitted to instructors.</p>
+          </div>
+        </section>
+
+        <section class="dashboard-grid">
+          <article class="panel">
+            <div class="panel-heading">
+              <div>
+                <h2>Recent Submissions</h2>
+                <p>Status of your submitted academic materials</p>
+              </div>
+            </div>
+
+            <div class="resource-list">
+              <div class="resource-item" style="cursor: default;">
+                <div class="resource-icon note-icon">✓</div>
+                <div class="resource-details">
+                  <h3>Algorithms Unit Summary Review</h3>
+                  <p>Computer Science · Reviewed by Dr. Sharma · Grade: Excellent</p>
+                </div>
+                <span class="status-badge" style="background:#e6f4ea;color:#137333;padding:4px 8px;border-radius:6px;font-size:12px;font-weight:bold;">REVIEWED</span>
+              </div>
+
+              <div class="resource-item" style="cursor: default;">
+                <div class="resource-icon pdf-icon">⏳</div>
+                <div class="resource-details">
+                  <h3>Database Systems Mini-Project Notes</h3>
+                  <p>Information Systems · Submitted 2 days ago</p>
+                </div>
+                <span class="status-badge" style="background:#fef7e0;color:#b06000;padding:4px 8px;border-radius:6px;font-size:12px;font-weight:bold;">PENDING</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="panel">
+            <div class="panel-heading">
+              <div>
+                <h2>Instructor Feedback</h2>
+                <p>Recent remarks and suggestions</p>
+              </div>
+            </div>
+            <div style="padding: 16px 0;">
+              <blockquote style="margin: 0; padding: 12px 16px; background: var(--soft-green); border-left: 4px solid var(--green); border-radius: 4px;">
+                <p style="margin: 0 0 6px 0; font-style: italic;">"Great synthesis of the sorting algorithms and complexity trade-offs in your notes. Well organized!"</p>
+                <small style="color: var(--muted);">— Dr. Sharma (Data Structures &amp; Algorithms)</small>
+              </blockquote>
+            </div>
+          </article>
+        </section>
+      </main>
+
+      <div id="footer"></div>
+    </div>
+  </div>
+
+  <script src="api.js"></script>
+  <script src="footer.js"></script>
+  <script>
+    (async function() {
+      const user = await requireAuth();
+      if (user) {
+        document.getElementById("sideName").textContent = user.name;
+        document.getElementById("sideAvatar").textContent = user.name.charAt(0).toUpperCase();
+      }
+    })();
+  </script>
+</body>
+</html>

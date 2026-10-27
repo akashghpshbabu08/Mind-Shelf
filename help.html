@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Help &amp; Support | MindShelf</title>
+  <link rel="stylesheet" href="student-dashboard.css">
+  <link rel="stylesheet" href="footer.css">
+</head>
+<body>
+  <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+  <div class="app">
+    <!-- Sidebar -->
+    <aside class="sidebar" id="sidebar">
+      <a href="student-dashboard.html" class="brand">
+        <span class="brand-icon">M</span>
+        <span>MindShelf</span>
+      </a>
+
+      <div class="side-label">WORKSPACE</div>
+
+      <nav class="side-nav">
+        <a href="student-dashboard.html" class="nav-link">
+          <span>▦</span> Dashboard
+        </a>
+
+        <a href="my-notes.html" class="nav-link">
+          <span>▤</span> My Notes
+        </a>
+
+        <a href="my-collections.html" class="nav-link">
+          <span>▣</span> My Collections
+        </a>
+
+        <a href="shared-resources.html" class="nav-link">
+          <span>▧</span> Resource Library
+        </a>
+
+        <a href="shared-knowledge.html" class="nav-link">
+          <span>♧</span> Shared Knowledge
+        </a>
+
+        <div class="side-label">ACADEMIC</div>
+
+        <a href="submissions.html" class="nav-link">
+          <span>☷</span> Submissions
+          <span class="nav-badge">2</span>
+        </a>
+      </nav>
+
+      <div class="sidebar-bottom">
+        <div class="help-card">
+          <div class="help-icon">✦</div>
+          <h4>Need assistance?</h4>
+          <p>We're here to help your learning journey.</p>
+        </div>
+
+        <a href="profile.html" class="profile-link">
+          <div class="avatar" id="sideAvatar">S</div>
+          <div class="profile-info">
+            <strong id="sideName">Student Account</strong>
+            <small>Student Account</small>
+          </div>
+          <span class="profile-arrow">›</span>
+        </a>
+      </div>
+    </aside>
+
+    <!-- Main Content -->
+    <div class="main">
+      <header class="topbar">
+        <div class="topbar-left">
+          <button class="menu-button" id="menuToggle" aria-label="Open navigation">☰</button>
+          <div class="brand-mobile">
+            <span class="brand-icon">M</span>
+            <span>MindShelf</span>
+          </div>
+        </div>
+
+        <div class="topbar-right">
+          <a href="student-dashboard.html" class="text-link">← Back to Dashboard</a>
+        </div>
+      </header>
+
+      <main class="content">
+        <section class="welcome-box">
+          <div class="welcome-text">
+            <span class="tag">SUPPORT &amp; GUIDES</span>
+            <h1>Help &amp; <em>Support</em></h1>
+            <p>Find answers to common questions about organizing notes, creating collections, and sharing resources.</p>
+          </div>
+        </section>
+
+        <section class="dashboard-grid">
+          <article class="panel">
+            <div class="panel-heading">
+              <div>
+                <h2>Frequently Asked Questions</h2>
+                <p>Quick answers to common questions</p>
+              </div>
+            </div>
+
+            <div style="padding: 16px 0; display: flex; flex-direction: column; gap: 16px;">
+              <div>
+                <h3 style="margin: 0 0 6px 0; font-size: 15px;">How do I create and organize notes?</h3>
+                <p style="margin: 0; color: var(--muted);">Go to <strong>My Notes</strong> and click <strong>Create a note</strong>. You can organize by subject, tags, or add them to <strong>My Collections</strong>.</p>
+              </div>
+
+              <div>
+                <h3 style="margin: 0 0 6px 0; font-size: 15px;">How does sharing resources work?</h3>
+                <p style="margin: 0; color: var(--muted);">In the <strong>Resource Library</strong>, you can share useful links and documents with your college peers. Materials are curated by community members.</p>
+              </div>
+
+              <div>
+                <h3 style="margin: 0 0 6px 0; font-size: 15px;">What is Shared Knowledge?</h3>
+                <p style="margin: 0; color: var(--muted);"><strong>Shared Knowledge</strong> is our community discussion space where students can post questions, explanations, and key takeaways.</p>
+              </div>
+            </div>
+          </article>
+
+          <article class="panel">
+            <div class="panel-heading">
+              <div>
+                <h2>Contact College Support</h2>
+                <p>Have an inquiry or technical issue?</p>
+              </div>
+            </div>
+            <div style="padding: 16px 0;">
+              <p style="margin-top:0;">Reach out to the MindShelf campus team:</p>
+              <p><strong>Email:</strong> support@mindshelf.college.edu</p>
+              <p><strong>Hours:</strong> Mon – Fri, 9:00 AM – 5:00 PM</p>
+            </div>
+          </article>
+        </section>
+      </main>
+
+      <div id="footer"></div>
+    </div>
+  </div>
+
+  <script src="api.js"></script>
+  <script src="footer.js"></script>
+  <script>
+    (async function() {
+      const user = await requireAuth();
+      if (user) {
+        document.getElementById("sideName").textContent = user.name;
+        document.getElementById("sideAvatar").textContent = user.name.charAt(0).toUpperCase();
+      }
+    })();
+  </script>
+</body>
+</html>

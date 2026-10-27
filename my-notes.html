@@ -1,0 +1,330 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Notes | MindShelf</title>
+    <link rel="stylesheet" href="my-notes.css">
+</head>
+<body>
+
+<div class="app">
+
+    <!-- Sidebar -->
+    <aside class="sidebar" id="sidebar">
+        <a href="student-dashboard.html" class="brand">
+            <div class="brand-logo">M</div>
+            <div>
+                <h2>MindShelf<span>.</span></h2>
+                <small>YOUR KNOWLEDGE SPACE</small>
+            </div>
+        </a>
+
+        <p class="side-heading">WORKSPACE</p>
+
+        <nav class="side-nav">
+            <a href="student-dashboard.html" class="nav-link">
+                <span>⌂</span> Dashboard
+            </a>
+
+            <a href="my-notes.html" class="nav-link active">
+                <span>▤</span> My Notes
+                <span class="nav-count" id="sideNoteCount">0</span>
+            </a>
+
+            <a href="my-collections.html" class="nav-link">
+                <span>▦</span> Collections
+            </a>
+
+            <a href="shared-resources.html" class="nav-link">
+                <span>▧</span> Resource Library
+            </a>
+
+            <a href="shared-knowledge.html" class="nav-link">
+                <span>♧</span> Shared Knowledge
+            </a>
+        </nav>
+
+        <p class="side-heading second-heading">PERSONAL</p>
+
+        <nav class="side-nav">
+            <a href="#favorite" id="sideFavoritesLink" class="nav-link">
+                <span>☆</span> Favorites
+            </a>
+
+            <a href="#archived" id="sideArchiveLink" class="nav-link">
+                <span>▱</span> Archive
+            </a>
+        </nav>
+
+        <div class="sidebar-bottom">
+            <div class="storage-card">
+                <div class="storage-heading">
+                    <span>Notes space</span>
+                    <span>Cloud</span>
+                </div>
+                <div class="storage-track">
+                    <div id="storageBar"></div>
+                </div>
+                <p>Saved to your account.</p>
+            </div>
+
+            <div class="sidebar-user">
+                <div class="avatar" id="sideAvatar">S</div>
+                <div class="user-details">
+                    <strong id="sideUserName">Student</strong>
+                    <small>Student account</small>
+                </div>
+                <button class="more-button" id="sideMore" type="button">···</button>
+            </div>
+        </div>
+    </aside>
+
+    <div class="overlay" id="overlay"></div>
+
+    <!-- Main Content -->
+    <main class="main-content">
+
+        <!-- Top Navbar -->
+        <header class="topbar">
+            <button class="menu-button" id="menuToggle" type="button">☰</button>
+
+            <div class="breadcrumb">
+                Workspace <span>/</span> <strong>My Notes</strong>
+            </div>
+
+            <div class="top-actions">
+
+                <div class="search-box">
+                    <span>⌕</span>
+                    <input type="search" id="searchInput"
+                        placeholder="Search your notes...">
+                    <kbd>/</kbd>
+                </div>
+
+                <button class="notification-button" id="notificationButton"
+                    type="button" aria-label="Notifications">♧</button>
+
+                <div class="profile-dropdown" id="profileDropdown">
+                    <button class="profile-toggle" id="profileToggle"
+                        type="button" aria-expanded="false"
+                        aria-controls="profileMenu">
+                        <div class="avatar" id="topAvatar">S</div>
+                        <span>⌄</span>
+                    </button>
+
+                    <div class="profile-menu" id="profileMenu" hidden>
+                        <div class="profile-info">
+                            <strong id="menuUserName">Student</strong>
+                            <small>Student account</small>
+                        </div>
+                        <a href="profile.html">My Profile</a>
+                        <a href="settings.html">Settings</a>
+                        <button id="signOutButton" type="button">Sign Out</button>
+                    </div>
+                </div>
+
+            </div>
+        </header>
+
+        <div class="page-content">
+
+            <!-- Page Heading -->
+            <section class="page-heading">
+                <div>
+                    <div class="eyebrow">✳ YOUR PERSONAL SPACE</div>
+                    <h1>My <em>Notes</em></h1>
+                    <p>A little organization goes a long way.
+                        Keep your learning close.</p>
+                </div>
+
+                <button class="primary-button" id="createNoteButton"
+                    type="button">
+                    <span>＋</span> Create a note
+                </button>
+            </section>
+
+            <!-- Overview Cards -->
+            <section class="overview">
+
+                <div class="overview-card">
+                    <div class="stat-icon green">▤</div>
+                    <div>
+                        <small>Total notes</small>
+                        <h2 id="totalNotes">0</h2>
+                        <p>In your workspace</p>
+                    </div>
+                </div>
+
+                <div class="overview-card">
+                    <div class="stat-icon yellow">☆</div>
+                    <div>
+                        <small>Favorites</small>
+                        <h2 id="favoriteNotes">0</h2>
+                        <p>Quick access notes</p>
+                    </div>
+                </div>
+
+                <div class="overview-card">
+                    <div class="stat-icon purple">◷</div>
+                    <div>
+                        <small>Recently updated</small>
+                        <h2 id="recentNotes">0</h2>
+                        <p>Updated in 7 days</p>
+                    </div>
+                </div>
+
+            </section>
+
+            <!-- Notes Workspace -->
+            <section class="notes-section">
+
+                <div class="workspace-header">
+                    <div>
+                        <h2>Your notebook
+                            <span id="visibleCount">0 notes</span>
+                        </h2>
+                        <p>Everything you've captured, all in one place.</p>
+                    </div>
+
+                    <div class="view-tools">
+                        <label for="sortNotes">Sort by</label>
+                        <select id="sortNotes">
+                            <option value="updated">Last updated</option>
+                            <option value="created">Date created</option>
+                            <option value="title">Title A-Z</option>
+                        </select>
+
+                        <button class="view-button active" id="gridView"
+                            type="button" aria-label="Grid view">▦</button>
+
+                        <button class="view-button" id="listView"
+                            type="button" aria-label="List view">☷</button>
+                    </div>
+                </div>
+
+                <!-- Filters -->
+                <div class="filter-row">
+                    <div class="filter-tabs">
+                        <button class="filter-tab active" data-filter="all"
+                            type="button">
+                            All notes <span id="allTabCount">0</span>
+                        </button>
+
+                        <button class="filter-tab" data-filter="favorite"
+                            type="button">☆ Favorites</button>
+
+                        <button class="filter-tab" data-filter="archived"
+                            type="button">Archive</button>
+                    </div>
+
+                    <div class="subject-filter">
+                        <label for="subjectFilter">Subject</label>
+                        <select id="subjectFilter">
+                            <option value="all">All subjects</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="filter-info" id="filterInfo" hidden></div>
+
+                <!-- Notes will appear here -->
+                <div class="notes-grid" id="notesGrid"></div>
+
+                <!-- Empty State -->
+                <div class="empty-state" id="emptyState" hidden>
+                    <div class="empty-icon">▤<span>✦</span></div>
+                    <h3 id="emptyTitle">Your notebook starts here</h3>
+                    <p id="emptyText">
+                        Capture a concept, a class summary, or a useful idea.
+                    </p>
+                    <button class="primary-button" id="emptyCreateButton"
+                        type="button">＋ Create your first note</button>
+                </div>
+
+                <footer class="workspace-footer">
+                    <span>Thoughts become clearer when you write them down.</span>
+                    <span>MADE FOR YOUR LEARNING JOURNEY ✳</span>
+                </footer>
+
+            </section>
+        </div>
+    </main>
+</div>
+
+<!-- Create/Edit Note Modal -->
+<div class="modal-backdrop" id="noteModal" hidden>
+    <section class="note-modal" role="dialog" aria-modal="true"
+        aria-labelledby="modalTitle">
+
+        <div class="modal-header">
+            <div>
+                <div class="eyebrow">✳ YOUR NOTEBOOK</div>
+                <h2 id="modalTitle">Create a note</h2>
+            </div>
+            <button class="close-button" id="closeModalButton"
+                type="button" aria-label="Close">×</button>
+        </div>
+
+        <form id="noteForm">
+
+            <label class="form-label" for="noteTitle">
+                Note title <span>*</span>
+            </label>
+            <input class="form-control" id="noteTitle"
+                maxlength="120" placeholder="Give your note a clear title..."
+                required>
+
+            <div class="form-row">
+                <div>
+                    <label class="form-label" for="noteSubject">Subject</label>
+                    <input class="form-control" id="noteSubject"
+                        list="subjectOptions" maxlength="60"
+                        placeholder="e.g. Data Science">
+                    <datalist id="subjectOptions">
+                        <option value="Data Science">
+                        <option value="Mathematics">
+                        <option value="UI/UX Design">
+                        <option value="Web Development">
+                        <option value="Programming">
+                    </datalist>
+                </div>
+
+                <div>
+                    <label class="form-label" for="noteTags">
+                        Tags <small>(comma separated)</small>
+                    </label>
+                    <input class="form-control" id="noteTags"
+                        maxlength="160" placeholder="revision, unit 1">
+                </div>
+            </div>
+
+            <label class="form-label" for="noteContent">
+                Your notes <span>*</span>
+            </label>
+            <textarea class="form-control note-content" id="noteContent"
+                maxlength="20000" placeholder="Start writing your ideas here..."
+                required></textarea>
+
+            <div class="editor-bottom">
+                <span id="characterCount">0 characters</span>
+                <span>Saved to this device</span>
+            </div>
+
+            <div class="modal-actions">
+                <button class="secondary-button" id="cancelModalButton"
+                    type="button">Cancel</button>
+                <button class="primary-button" type="submit"
+                    id="saveNoteButton">Save note ↗</button>
+            </div>
+        </form>
+    </section>
+</div>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script src="api.js"></script>
+<script src="my-notes.js"></script>
+</body>
+</html>
